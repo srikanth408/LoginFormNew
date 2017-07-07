@@ -1,0 +1,15 @@
+<div class="nav-bar text">
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        <img src="images/Copart.png" style="width:150px;height:50px;">
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+           <li *ngIf="isLoggedIn"><a (click)="logout()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>
+</div>
+<div class="my-container">
+<router-outlet></router-outlet>
+</div>

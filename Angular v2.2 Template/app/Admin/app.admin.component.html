@@ -1,0 +1,42 @@
+<ul class="nav nav-tabs">
+    <li class="active"><a routerLink="/admin" routerLinkActive="active">Dashboard</a></li>
+    <li><a routerLink="/signup" routerLinkActive="active">Add User</a></li>
+    <li><a routerLink="/leave" routerLinkActive="active">Apply Leave</a></li>
+    <li><a routerLink="/edit" routerLinkActive="active">Edit User</a></li>
+</ul>
+<br>
+<div class="panel panel-primary">
+    <div class="panel-heading">Leave requests </div>
+    <div class="panel-body table-responsive mytable_full">
+        <table class="table table-striped" id="mytable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Onsite Manager</th>
+                    <th>Leave balance </th>
+                    <th>Leaves applied</th>
+                    <th>From Date</th>
+                    <th>To date</th>
+                    <th>Reason</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employees of employee;let i = index;">
+                    <td><span *ngIf="editedIndex !== i" >{{employees.name}}</span>
+                        <input type="text" [(ngModel)]="employees.name" value={{employees.name}} *ngIf="editedIndex === i" ></td>
+                    <td>{{employees.manager}}</td>
+                    <td>{{employees.leaveBalance}}</td>
+                    <td>{{employees.leavesApplied}}</td>
+                    <td>{{employees.fromDate}}</td>
+                    <td>{{employees.toDate}}</td>
+                    <td>{{employees.reason}}</td>
+                    <td>{{employees.status}}</td>
+                    <button *ngIf="approve"  type="submit" class="btn btn-mini btn-primary" (click)="onApprove(i)">Approve</button>
+                    <button *ngIf="reject" type="submit" class="btn btn-mini btn-danger" (click)="onReject(i)">Reject</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
